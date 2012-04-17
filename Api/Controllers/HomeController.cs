@@ -29,12 +29,12 @@ namespace Api.Controllers
                 file.SaveAs(path);
             }
 
-            return RedirectToAction("Download", new {fileName = file.FileName, contentType = file.ContentType});
+            return RedirectToAction("Download", new { fileName = file.FileName, contentType = file.ContentType, fileDownloadName = file.FileName });
         }
 
-        public ActionResult Download(string fileName, string contentType)
+        public ActionResult Download(string fileName, string contentType, string fileDownloadName)
         {
-            return File(Path.Combine(Server.MapPath("~/App_Data/"), fileName), contentType);
+            return File(Path.Combine(Server.MapPath("~/App_Data/"), fileName), contentType, fileDownloadName);
         }
 
 

@@ -28,11 +28,12 @@ namespace WebApiProxy
                     TransferMode = TransferMode.Streamed,
                     MessageHandlers =
                         {
-                            new ValidateTokenHandler()
+                            //new ValidateTokenHandler(),
+                            //new IPHostValidationHandler()
                         }
                 };
 
-                config.Routes.MapHttpRoute("Proxy", "{*path}", new {controller = "Proxy", path = ""});
+                config.Routes.MapHttpRoute("Proxy", "{*path}", new {controller = "SimpleProxy", path = ""});
 
                 server = new HttpSelfHostServer(config);
 
