@@ -20,10 +20,7 @@ namespace WebApiProxy
             if (request.Method == HttpMethod.Get || request.Method == HttpMethod.Trace) request.Content = null;
             request.RequestUri = new Uri("http://" + host + request.RequestUri.PathAndQuery);
 
-            return new HttpClient()
-            {
-                MaxResponseContentBufferSize = 1024*1024
-            }.SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+            return new HttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
                 .ContinueWith(r =>
                 {
                     r.Result.Headers.TransferEncodingChunked = null; //throws an error on calls to WebApi results

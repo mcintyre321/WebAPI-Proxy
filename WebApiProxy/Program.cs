@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -39,6 +40,7 @@ namespace WebApiProxy
 
                 server.OpenAsync().Wait();
 
+                var timer = new Timer(Report, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
                 Console.WriteLine("Hit ENTER to exit");
                 Console.ReadLine();
             }
@@ -49,6 +51,14 @@ namespace WebApiProxy
                     server.CloseAsync().Wait();
                 }
             }
+        }
+
+        private static void Report(object state)
+        {
+            var pos = new {Console.CursorLeft, Console.CursorTop};
+            Console.SetCursorPosition(0,0);
+            Console.Write(string.Format("{0:n0}", Process.GetCurrentProcess().PagedMemorySize64 / 1024) + "kb            ");
+            Console.SetCursorPosition(pos.CursorLeft, pos.CursorTop);
         }
     }
     
