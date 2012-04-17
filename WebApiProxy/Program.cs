@@ -33,7 +33,7 @@ namespace WebApiProxy
                         }
                 };
 
-                config.Routes.MapHttpRoute("Proxy", "{*path}", new {controller = "SimpleProxy", path = ""});
+                config.Routes.MapHttpRoute("Proxy", "{*path}", new {controller = "Proxy", path = ""});
 
                 server = new HttpSelfHostServer(config);
 

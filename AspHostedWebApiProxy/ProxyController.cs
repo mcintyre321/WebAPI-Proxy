@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AspHostedWebApiProxy
 {
-    public class ProxyController : WebApiProxy.SimpleProxyController
+    public class ProxyController : WebApiProxy.ProxyController
     {
     }
 }
