@@ -13,24 +13,26 @@ namespace HttpClientMemoryTest
 
         public static void Main(string[] args)
         {
-             
-                var timer = new Timer(Report, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
 
-                while (true)
+            var timer = new Timer(Report, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
+            Console.SetCursorPosition(0, 10);
+            Console.WriteLine(@"Press enter to send c:\halfgigfile.zip to http://localhost:3000/home/upload or type exit");
+
+            while (true)
+            {
+
+                if (Console.ReadLine() == "exit") break;
+                var httpCLient = new HttpClient();
+                var fileStream = File.OpenRead(@"C:\halfgigfile.zip");
+                var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:3000/home/upload")
                 {
-                    if (Console.ReadLine() == "exit") break;
-                    var httpCLient = new HttpClient();
-                    var fileStream = File.OpenRead(@"C:\onegigfile.zip");
-                    var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:3000/home/upload")
-                    {
-                        Content = new StreamContent(fileStream)
-                    };
-                    Console.SetCursorPosition(0, 10);
-                    httpCLient.SendAsync(request).ContinueWith(s => { Console.WriteLine("sent"); fileStream.Close(); });
-                    Console.WriteLine("sending");
+                    Content = new StreamContent(fileStream)
+                };
+                httpCLient.SendAsync(request).ContinueWith(s => { Console.WriteLine("sent"); fileStream.Close(); });
+                Console.WriteLine("sending");
 
-                }
-            
+            }
+
         }
 
         private static void Report(object state)
