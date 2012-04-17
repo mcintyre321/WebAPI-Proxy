@@ -9,6 +9,7 @@ namespace WebApiProxy
 {
     public class ProxyController : IHttpController
     {
+
         public Task<HttpResponseMessage> ExecuteAsync(HttpControllerContext controllerContext, CancellationToken cancellationToken)
         {
             var request = controllerContext.Request;
@@ -23,8 +24,8 @@ namespace WebApiProxy
         private Task<HttpResponseMessage> Proxy(string path, HttpRequestMessage request)
         {
             var httpClient = new HttpClient();
-            bool useFiddler = true;
-            var hostname = useFiddler ? "ipv4.fiddler:3000" : "localhost:3000"; //special address for fiddler as localhost doesn't get intercepted
+             
+            var hostname = UseFiddler ? "ipv4.fiddler:3000" : "localhost:3000"; //special address for fiddler as localhost doesn't get intercepted
 
             var apiRequest = new HttpRequestMessage(request.Method, new Uri("http://" + hostname + "/" + path));
 
@@ -45,6 +46,7 @@ namespace WebApiProxy
                 .Unwrap();
         }
 
+        public bool UseFiddler = true;
 
         private Task<HttpResponseMessage> ReadApiResultContentAndReturnNewResponse(Task<HttpResponseMessage> apiResponseTask)
         {

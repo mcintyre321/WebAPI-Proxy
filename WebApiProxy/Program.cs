@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Filters;
 using System.Web.Http.SelfHost;
+using WebApiProxy.Authorization;
 
 namespace WebApiProxy
 {
@@ -24,6 +26,10 @@ namespace WebApiProxy
                 {
                     MaxReceivedMessageSize = 1024 * 1024 * 1024,
                     TransferMode = TransferMode.Streamed,
+                    MessageHandlers =
+                        {
+                            new ValidateTokenHandler()
+                        }
                 };
 
                 config.Routes.MapHttpRoute("Proxy", "{*path}", new {controller = "Proxy", path = ""});
@@ -44,4 +50,6 @@ namespace WebApiProxy
             }
         }
     }
+    
+ 
 }

@@ -51,6 +51,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyController.cs" />
+    <Compile Include="Authorization\RsaClass.cs" />
+    <Compile Include="Authorization\ValidateTokenHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authorization\AuthorizationHeader\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

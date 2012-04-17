@@ -11,7 +11,7 @@
     <header>
         <div class="content-wrapper">       
             <div class="float-left">
-                <p class="site-title"><a href="/">ASP.NET Web API</a></p>
+                <p class="site-title"><a href="/">Api Proxy Demo</a></p>
             </div>
         </div>
     </header>
@@ -19,21 +19,21 @@
         <section class="featured">
             <div class="content-wrapper">
                 <hgroup class="title">
-                    <h1>This page loads happily via the proxy. To view the unproxied version, go to <a href="http://localhost:3000">http://localhost:3000</a></h1>
+                    <h1>Note: make sure you are running <a href="Fiddler!">http://fiddler2.com/fiddler2/</a> as the ProxyController is hardcoded to use it by default</h1>
                 </hgroup>
-                <p>
-                    And to prove the proxy works on URLs other than the root go to <a href="/Home/Index2">/Home/Index2</a>
-                </p>
-                <p>
-                    But what happens if you go to the WebAPI page? <a href="/Api/Values">/Api/Values</a>
-                </p>
+                <ul>
+                    <li>unproxied version <a href="http://localhost:3000">http://localhost:3000</a></li>
+                    <li>ASP hosted proxy <a href="http://localhost:3001">http://localhost:3001</a></li>
+                    <li>Console hosted proxy <a href="http://localhost:3002">http://localhost:3002</a></li>
+
+                </ul>
             </div>
-        </section>
+        </section>             
         <section class="content-wrapper main-content clear-fix">
              <form action="/home/upload" method="post" enctype="multipart/form-data">
-  
-              <label for="file">Filename:</label>
-              <input type="file" name="file" id="file" />
+                <legend>File upload and download test</legend>
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
 
               <input type="submit" />
             </form>
