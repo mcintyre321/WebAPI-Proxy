@@ -16,14 +16,14 @@ namespace HttpClientMemoryTest
 
             var timer = new Timer(Report, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
             Console.SetCursorPosition(0, 10);
-            Console.WriteLine(@"Press enter to send c:\halfgigfile.zip to http://localhost:3000/home/upload or type exit");
+            Console.WriteLine(@"Press enter to send c:\500mb.dat to http://localhost:3000/home/upload or type exit");
 
             while (true)
             {
 
                 if (Console.ReadLine() == "exit") break;
                 var httpCLient = new HttpClient();
-                var fileStream = File.OpenRead(@"C:\halfgigfile.zip");
+                var fileStream = File.OpenRead(@"C:\500mb.dat");
                 var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:3000/home/upload")
                 {
                     Content = new StreamContent(fileStream)

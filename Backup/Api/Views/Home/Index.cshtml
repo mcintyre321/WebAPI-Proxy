@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>ASP.NET Web API</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">       
+            <div class="float-left">
+                <p class="site-title"><a href="/">Api Proxy Demo</a></p>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <section class="featured">
+            <div class="content-wrapper">
+                <hgroup class="title">
+                    <h1>Note: make sure you are running <a href="Fiddler!">http://fiddler2.com/fiddler2/</a> as the ProxyController is hardcoded to use it by default</h1>
+                </hgroup>
+                <ul>
+                    <li>unproxied version <a href="http://localhost:3000">http://localhost:3000</a></li>
+                    <li>ASP hosted proxy <a href="http://localhost:3001">http://localhost:3001</a></li>
+                    <li>Console hosted proxy <a href="http://localhost:3002">http://localhost:3002</a></li>
+
+                </ul>
+            </div>
+        </section>             
+        <section class="content-wrapper main-content clear-fix">
+             <form action="/home/upload" method="post" enctype="multipart/form-data">
+                <legend>File upload and download test</legend>
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
+
+              <input type="submit" />
+            </form>
+        </section>
+    </div>
+</body>
+</html>

@@ -9,7 +9,7 @@ namespace WebApiProxy
         {
             foreach (var header in from)
             {
-                to.AddWithoutValidation(header.Key, header.Value);
+                to.TryAddWithoutValidation(header.Key, header.Value);
             }
         }
 
@@ -23,7 +23,7 @@ namespace WebApiProxy
         {
             foreach (var header in from)
             {
-                to.AddWithoutValidation(header.Key, header.Value);
+                to.TryAddWithoutValidation(header.Key, header.Value);
             }
         }
 
@@ -37,7 +37,7 @@ namespace WebApiProxy
         {
             foreach (var header in from)
             {
-                to.AddWithoutValidation(header.Key, header.Value);
+                to.TryAddWithoutValidation(header.Key, header.Value);
             }
         }
 
