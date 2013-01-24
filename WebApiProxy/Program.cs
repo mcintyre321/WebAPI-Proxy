@@ -33,6 +33,9 @@ namespace WebApiProxy
                             //new IPHostValidationHandler()
                         }
                 };
+                config.MessageHandlers.Clear();
+                config.MessageHandlers.Add(new AddCommentHandler());
+                config.MessageHandlers.Add(new ForwardProxyMessageHandler());
 
                 config.Routes.MapHttpRoute("Proxy", "{*path}", new {controller = "Proxy", path = ""});
 
